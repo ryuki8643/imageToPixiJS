@@ -1,15 +1,15 @@
 import React from 'react';
-import Unity, { UnityContext } from 'react-unity-webgl';
+import  { Unity,useUnityContext } from 'react-unity-webgl';
 
-const unityContext = new UnityContext({
-  loaderUrl: 'Build/UnityLoader.js',
-  dataUrl: 'Build/projectName.data',
-  frameworkUrl: 'Build/projectName.framework.js',
-  codeUrl: 'Build/projectName.wasm',
+const {unityProvider} = new useUnityContext({
+  loaderUrl: 'Build/Build.loader.js',
+  dataUrl: 'Build/Build.data',
+  frameworkUrl: 'Build/Build.framework.js',
+  codeUrl: 'Build/Build.wasm',
 });
 
 function UnityComponent() {
-  return <Unity unityContext={unityContext} />;
+  return <Unity unityProvider={unityProvider} />;
 }
 
 export default UnityComponent;
