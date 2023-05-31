@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import { BlurFilter } from 'pixi.js';
+import { Stage, Container, Sprite, Text, useTick } from '@pixi/react';
+import { TextStyle } from 'pixi.js';
+import { useMemo,useRef,useReducer,useState } from 'react';
+import UnityComponent from './UnityComponent';
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Stage>
+      <RotatingText />
+    </Stage>
   );
 }
 
+function RotatingText() {
+  const [rotation, setRotation] = useState(0)
+  useTick(delta => {
+      setRotation(rotation + 0.01 * delta)
+  })
+  return (
+    <>
+    <UnityComponent/>
+     <Text text="Hello World"
+          x={100} 
+          y={100}
+          rotation={rotation}
+          anchor={0.5}
+          style={new TextStyle({fill:'white'})} 
+    /></>
+  )
+}
+
+
 export default App;
+
