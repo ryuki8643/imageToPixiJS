@@ -1,9 +1,9 @@
 import UnityComponent from "./UnityComponent";
-import PixiRotate from "./PixiRotate";
+import PxiRotateText from "./PxiRotateText"
 
 export default function App(){
     return (<>
         <UnityComponent />
-        <PixiRotate/>
+        <PxiRotateText/>
     </>)
 }
