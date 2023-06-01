@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import UnityComponent from './UnityComponent';
+import App from './App';
+import PixiRotate from './PixiRotate';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <UnityComponent/>
+    <PixiRotate/>
+    <App/>
   </React.StrictMode>
 );
 
