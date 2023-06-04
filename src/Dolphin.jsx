@@ -5,17 +5,27 @@ Command: npx gltfjsx@6.2.3 dolphin.glb
 
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
+import {  useFrame} from  '@react-three/fiber';
+import { Mesh } from 'three';
 
 const MODEL_PATH = '/Blender/dolphin.glb'
 
 export function Dolphin(props) {
+  const groupRef = useRef();
+  useFrame(() => { groupRef.current.rotation.y += 0.01;})
   const { nodes, materials } = useGLTF(MODEL_PATH)
   return (
-    <group {...props} dispose={null}>
-      <mesh geometry={nodes.tmp37gbq0itply_1.geometry} material={materials['Material.001']} />
-      <mesh geometry={nodes.tmp37gbq0itply_2.geometry} material={materials['Material.002']} />
+    <group {...props} dispose={null} ref={groupRef}>
+      <mesh
+        geometry={nodes.tmp37gbq0itply_1.geometry}
+        material={materials["Material.001"]}
+      />
+      <mesh
+        geometry={nodes.tmp37gbq0itply_2.geometry}
+        material={materials["Material.002"]}
+      />
     </group>
-  )
+  );
 }
 
 useGLTF.preload(MODEL_PATH)

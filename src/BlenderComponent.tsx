@@ -5,9 +5,6 @@ import { Mesh } from 'three';
 import React from 'react';
 import { Dolphin } from './Dolphin';
 
-type BoxProps = {
-  position: [x: number, y: number, z: number];
-};
 
 const BlenderComponent = () => {
   return (
